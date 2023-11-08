@@ -4,7 +4,7 @@
     "slug": "kino",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo5.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo5.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.kenjaokhunov.kino"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b29e6b1b-9c75-4da6-bbdd-10ffdfe95d77"
+      }
     }
   }
 }

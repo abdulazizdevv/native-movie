@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -13,14 +13,15 @@ import TrendingMovie from "../components/trending-movies";
 import UpcomingMovie from "../components/upcoming-movie";
 import TopRatedMovie from "../components/top-rated";
 import Loader from "../components/loader";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Home({ navigation }) {
+export default function Home() {
   const [trending, setTrending] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [popular, setPopularMovie] = useState([]);
   const [isLoader, setIsLoader] = useState(true);
-
+  const navigation = useNavigation()
   useEffect(() => {
     getTrendingMovie();
     getUpcomingMovie();
@@ -30,18 +31,18 @@ export default function Home({ navigation }) {
 
   const getTrendingMovie = async () => {
     const data = await fetchTrendingMovie();
-    setTrending(data.results);
+    data.results && setTrending(data.results);
     setIsLoader(false);
   };
 
   const getUpcomingMovie = async () => {
     const data = await fetchUpcomingMovie();
-    setUpcoming(data.results);
+    data.results && setUpcoming(data.results);
   };
 
   const getTopRatedMovie = async () => {
     const data = await fetchTopRatedMovie();
-    setTopRated(data.results);
+    data.results && setTopRated(data.results);
   };
 
   const getPopularMovie = async () => {
@@ -64,7 +65,9 @@ export default function Home({ navigation }) {
             height={10}
             alt="logo"
           />
-          <MagnifyingGlassIcon size={30} strokeWidth={2} color={"white"} />
+          <TouchableOpacity onPress={()=>navigation.navigate("Search")}>
+            <MagnifyingGlassIcon size={30} strokeWidth={2} color={"white"} />
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
       {isLoader ? (

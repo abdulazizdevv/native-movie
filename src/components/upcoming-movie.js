@@ -17,7 +17,7 @@ export default function UpcomingMovie({ upcoming, title }) {
   const navigation = useNavigation();
   return (
     <View className={"mb-8 space-y-4"}>
-      <Text className="text-red-600 text-lg">{title}</Text>
+      <Text className="text-white text-lg">{title}</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -25,7 +25,7 @@ export default function UpcomingMovie({ upcoming, title }) {
       >
         {upcoming.map((item) => (
           <TouchableWithoutFeedback
-          onPress={() => navigation.navigate("Movie", item)}
+          onPress={() => navigation.navigate("Movie", item.id)}
           key={item.id}
           >
             <View className={"space-y-1 mr-4"}>

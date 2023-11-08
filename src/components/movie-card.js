@@ -6,12 +6,11 @@ import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 
 export default function MovieCard({ item }) {
-  
   const navigation = useNavigation();
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigation.navigate("Movie", item)}
+      onPress={() => navigation.navigate("Movie", item.id)}
     >
       <Image
         source={{ uri: image500(item.poster_path) }}
